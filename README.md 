@@ -1,0 +1,83 @@
+# User Management Microservice
+
+Este es un microservicio desarrollado en Java Spring Boot para el manejo de usuarios. El microservicio permite realizar operaciones CRUD en una entidad de "Usuario". Utiliza una base de datos embebida H2 y sigue las convenciones de codificación de Java.
+
+## Instrucciones de Uso
+
+Sigue estos pasos para compilar, ejecutar y probar el microservicio:
+
+1. **Compilación**: Abre una terminal en el directorio raíz del proyecto y ejecuta el siguiente comando para compilar el proyecto:
+```mvn clean install```
+
+
+2. **Ejecución**: Una vez compilado, ejecuta el siguiente comando para iniciar el microservicio:
+```java -jar target/demo-0.0.1-SNAPSHOT.jar```
+
+
+3. **Acceso a la Interfaz REST**: El microservicio estará disponible en la dirección `http://localhost:8080`. Puedes acceder a la interfaz REST utilizando herramientas como `curl` o un cliente REST como Postman.
+
+4. **Endpoints Disponibles**:
+- `GET /users`: Obtiene la lista de usuarios con paginación y ordenamiento.
+- `GET /users/{id}`: Obtiene los detalles de un usuario por su ID.
+- `POST /users`: Crea un nuevo usuario.
+- `PUT /users/{id}`: Actualiza los detalles de un usuario existente.
+- `DELETE /users/{id}`: Elimina un usuario por su ID.
+
+## Pruebas Unitarias e Integración
+
+El proyecto incluye pruebas unitarias y de integración para garantizar el correcto funcionamiento del microservicio. Puedes ejecutar las pruebas utilizando el siguiente comando:
+```mvn test```
+
+
+## Dependencias
+
+El proyecto utiliza las siguientes dependencias principales:
+
+- Spring Boot 2.5.5
+- H2 Database
+- JUnit 5
+- Mockito
+
+Asegúrate de tener instalado Maven para compilar y gestionar las dependencias.
+
+## Notas
+
+- Este es un ejemplo básico para ilustrar el desarrollo de un microservicio en Java Spring Boot. Puedes personalizarlo y agregar funcionalidades adicionales según tus necesidades.
+
+- Recuerda mantener las dependencias actualizadas para asegurarte de que estás utilizando versiones compatibles y seguras.
+
+- Consulta la documentación de Spring Boot y otras fuentes para obtener más información sobre cómo configurar y personalizar tu microservicio.
+
+¡Disfruta desarrollando tu microservicio y explorando las capacidades de Spring Boot!
+
+
+### Respuestas
+
+1. Estrategia para manejar errores en la capa de controladores REST: Para manejar errores en la capa de controladores REST, puedes seguir estas estrategias:
+
+Manejo de Excepciones Personalizadas: Crea clases personalizadas para manejar excepciones específicas que puedan ocurrir en tus controladores, como UserNotFoundException para cuando un usuario no se encuentra. Luego, utiliza anotaciones como @ExceptionHandler para capturar y manejar estas excepciones.
+
+Respuestas de Error Estructuradas: Devuelve respuestas JSON estructuradas en caso de errores. Puedes definir una clase ErrorResponse que contenga detalles sobre el error, como el mensaje, el código de estado HTTP y otros datos relevantes.
+
+Codigos de Estado HTTP Apropiados: Utiliza códigos de estado HTTP apropiados en las respuestas de error, como 404 para recursos no encontrados y 400 para solicitudes incorrectas. Esto ayuda a los clientes a comprender y manejar adecuadamente los errores.
+
+2. Garantizar la seguridad de la aplicación y sus datos: Para garantizar la seguridad de la aplicación y sus datos, puedes seguir estas prácticas:
+
+Autenticación y Autorización: Implementa un sistema de autenticación para verificar la identidad de los usuarios y autorización para controlar sus permisos de acceso a los recursos.
+
+Seguridad de Contraseñas: Almacena las contraseñas de manera segura utilizando técnicas de hashing y salting. No almacenes contraseñas en texto claro.
+
+HTTPS: Utiliza HTTPS para cifrar las comunicaciones entre el cliente y el servidor y proteger los datos sensibles durante la transferencia.
+
+Validación de Entradas: Valida y filtra todas las entradas del usuario para prevenir ataques de inyección y otros tipos de vulnerabilidades.
+
+Actualizaciones y Parches: Mantén actualizadas las dependencias, frameworks y bibliotecas para evitar posibles vulnerabilidades conocidas.
+
+3. Endpoint de Salud en un Microservicio: Un endpoint de salud es un punto final en una aplicación que se utiliza para verificar si la aplicación está en funcionamiento y responde correctamente. Ayuda a los equipos de operaciones a supervisar la salud y el estado del servicio.
+
+En Spring Boot, puedes implementar un endpoint de salud de la siguiente manera:
+
+Agrega la dependencia spring-boot-starter-actuator en tu archivo pom.xml o build.gradle.
+En application.properties, habilita los endpoints de actuator con la propiedad management.endpoints.web.exposure.include=*.
+
+
